@@ -16,7 +16,7 @@ class ResponseCargueInventario
             $button .=
                 '  
              
-                <select name="estado" value="'.$res['estado'].'" class="form-contol custom-select" style="width:100%" required>
+                <select onChange="cambiarEstado('.$res['id'].',event.target.value)" name="estado" value="'.$res['estado'].'" class="form-contol custom-select" style="width:100%" required>
                     <option value="solicitado">Solicitado</option>
                     <option value="cancelado">Cancelado</option>
                     <option value="en backorder">En backorder</option>

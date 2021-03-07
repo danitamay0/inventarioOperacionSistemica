@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Detalle;
 use App\Models\Producto;
+use App\Models\Inventario;
 
 class DetalleObserver
 {
@@ -15,9 +16,10 @@ class DetalleObserver
      */
     public function created(Detalle $detalle)
     {
-        $prodcuto = Producto::findOrFail($detalle->producto_id);
-        $prodcuto->cant_disponible = $prodcuto->cant_disponible - $detalle->cantidad;
-        $prodcuto->save();
+        $inventario = Inventario::findOrFail($detalle->inventario_id);
+        $cant = $inventario->cantidad_disponible - $detalle->cantidad;
+        $inventario->cantidad_disponible = $cant < 0 ? 0 : $cant ;
+        $inventario->save();
     }
 
     /**

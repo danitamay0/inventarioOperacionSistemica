@@ -17,7 +17,6 @@ CREATE DATABASE IF NOT EXISTS `operac_local` /*!40100 DEFAULT CHARACTER SET lati
 USE `operac_local`;
 
 -- Volcando estructura para tabla operac_local.accesorios
-DROP TABLE IF EXISTS `accesorios`;
 CREATE TABLE IF NOT EXISTS `accesorios` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `num_parte` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -73,7 +72,6 @@ INSERT INTO `accesorios` (`id`, `num_parte`, `num_factura`, `costo_before_iva`, 
 /*!40000 ALTER TABLE `accesorios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.adicionals
-DROP TABLE IF EXISTS `adicionals`;
 CREATE TABLE IF NOT EXISTS `adicionals` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` bigint(20) unsigned NOT NULL,
@@ -102,7 +100,6 @@ INSERT INTO `adicionals` (`id`, `service_id`, `nombre`, `descripcion`, `valor`, 
 /*!40000 ALTER TABLE `adicionals` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.cargues_inventario
-DROP TABLE IF EXISTS `cargues_inventario`;
 CREATE TABLE IF NOT EXISTS `cargues_inventario` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `inventario_id` int(10) unsigned NOT NULL,
@@ -127,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `cargues_inventario` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla operac_local.cargues_inventario: ~5 rows (aproximadamente)
 DELETE FROM `cargues_inventario`;
@@ -137,11 +134,11 @@ INSERT INTO `cargues_inventario` (`id`, `inventario_id`, `num_pedido`, `guia`, `
 	(6, 7, 'RAD2', 'GUI2', '101002', 'solicitado', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:33:17', '2021-02-22 21:33:17'),
 	(7, 7, 'RAD2', 'GUI2', '101002', 'recibido', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:34:20', '2021-02-22 21:34:20'),
 	(13, 10, '2323', 'DSSD', '2323', 'solicitado', '232', 'SDSD', '2021-12-31', '2021-03-31', 'SDSD', '23', 234.00, 0, 234.00, 23, 5382.00, 23.00, 'SDSD', 2, '2021-02-22 21:53:34', '2021-02-22 21:53:34'),
-	(14, 7, 'rad3', 'guia3', 'fact3', 'solicitado', 'sdsd', 'sdsd', '2021-12-31', '2022-12-31', 'sdsd', 'confirm', 558.00, 0, 558.00, 333, 185814.00, 34.25, 'sd23', 2, '2021-02-22 22:10:31', '2021-02-22 22:10:31');
+	(14, 7, 'rad3', 'guia3', 'fact3', 'solicitado', 'sdsd', 'sdsd', '2021-12-31', '2022-12-31', 'sdsd', 'confirm', 558.00, 0, 558.00, 333, 185814.00, 34.25, 'sd23', 2, '2021-02-22 22:10:31', '2021-02-22 22:10:31'),
+	(15, 9, 'REDAR', '1SE2', 'RAD1', 'solicitado', 'SD23', 'ASDASD', '2021-12-31', '2021-12-31', 'ASDASD', 'ADASD', 5000.00, 0, 5000.00, 10, 50000.00, 9000.00, '255', 2, '2021-03-07 09:33:47', '2021-03-07 09:33:47');
 /*!40000 ALTER TABLE `cargues_inventario` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.categorias
-DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -152,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.categorias: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.categorias: ~0 rows (aproximadamente)
 DELETE FROM `categorias`;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `estado`, `created_at`, `updated_at`) VALUES
@@ -161,7 +158,6 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `estado`, `created_at`,
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.cellars
-DROP TABLE IF EXISTS `cellars`;
 CREATE TABLE IF NOT EXISTS `cellars` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -170,17 +166,17 @@ CREATE TABLE IF NOT EXISTS `cellars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla operac_local.cellars: ~1 rows (aproximadamente)
 DELETE FROM `cellars`;
 /*!40000 ALTER TABLE `cellars` DISABLE KEYS */;
 INSERT INTO `cellars` (`id`, `nombre`, `direccion`, `estado`, `created_at`, `updated_at`) VALUES
-	(2, 'Operacion Sistemica', 'Carrera 22a No. 35C-22 Isla del zapato', 'activo', '2020-11-23 11:02:33', '2020-11-23 11:02:33');
+	(2, 'Operacion Sistemica', 'Carrera 22a No. 35C-22 Isla del zapato', 'activo', '2020-11-23 11:02:33', '2020-11-23 11:02:33'),
+	(3, 'Prueba', 'Carrera 22a No. 35C-22 Isla del zapato', 'activo', '2020-11-23 11:02:33', '2020-11-23 11:02:33');
 /*!40000 ALTER TABLE `cellars` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.clausulas
-DROP TABLE IF EXISTS `clausulas`;
 CREATE TABLE IF NOT EXISTS `clausulas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -211,7 +207,6 @@ INSERT INTO `clausulas` (`id`, `nombre`, `marca_id`, `descripcion`, `created_at`
 /*!40000 ALTER TABLE `clausulas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.clientes
-DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -337,7 +332,6 @@ INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `email`, `identificacion`, `
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.comentarios
-DROP TABLE IF EXISTS `comentarios`;
 CREATE TABLE IF NOT EXISTS `comentarios` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` bigint(20) unsigned DEFAULT NULL,
@@ -838,30 +832,27 @@ INSERT INTO `comentarios` (`id`, `service_id`, `comentario`, `user`, `created_at
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.detalles
-DROP TABLE IF EXISTS `detalles`;
 CREATE TABLE IF NOT EXISTS `detalles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `producto_id` int(10) unsigned DEFAULT NULL,
+  `inventario_id` int(10) unsigned DEFAULT NULL,
   `venta_id` int(10) unsigned DEFAULT NULL,
   `cantidad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.detalles: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.detalles: ~3 rows (aproximadamente)
 DELETE FROM `detalles`;
 /*!40000 ALTER TABLE `detalles` DISABLE KEYS */;
-INSERT INTO `detalles` (`id`, `producto_id`, `venta_id`, `cantidad`, `precio`, `created_at`, `updated_at`) VALUES
-	(5, 1, 5, '1', NULL, '2020-11-23 18:22:19', '2020-11-23 18:22:19'),
-	(6, 1, 6, '1', NULL, '2020-11-23 20:20:18', '2020-11-23 20:20:18'),
-	(7, 1, 7, '2', NULL, '2020-11-23 21:29:54', '2020-11-23 21:29:54'),
-	(8, 1, 8, '1', NULL, '2021-02-09 21:06:18', '2021-02-09 21:06:18');
+INSERT INTO `detalles` (`id`, `inventario_id`, `venta_id`, `cantidad`, `precio`, `created_at`, `updated_at`) VALUES
+	(10, 1, 2, '5', '2467', '2021-03-07 12:50:40', '2021-03-07 12:50:40'),
+	(11, 7, 2, '10', '2467', '2021-03-07 12:50:40', '2021-03-07 12:50:40'),
+	(12, 8, 2, '5', '2467', '2021-03-07 12:50:40', '2021-03-07 12:50:40');
 /*!40000 ALTER TABLE `detalles` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.dineros
-DROP TABLE IF EXISTS `dineros`;
 CREATE TABLE IF NOT EXISTS `dineros` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` bigint(20) unsigned DEFAULT NULL,
@@ -912,7 +903,6 @@ INSERT INTO `dineros` (`id`, `service_id`, `method_pay`, `user_id`, `monto`, `fe
 /*!40000 ALTER TABLE `dineros` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.empresas
-DROP TABLE IF EXISTS `empresas`;
 CREATE TABLE IF NOT EXISTS `empresas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Mi empresa',
@@ -933,7 +923,6 @@ DELETE FROM `empresas`;
 /*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.equipos
-DROP TABLE IF EXISTS `equipos`;
 CREATE TABLE IF NOT EXISTS `equipos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cliente_id` int(10) unsigned NOT NULL,
@@ -1077,7 +1066,6 @@ INSERT INTO `equipos` (`id`, `cliente_id`, `num_factura`, `fecha_compra`, `marca
 /*!40000 ALTER TABLE `equipos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.estados
-DROP TABLE IF EXISTS `estados`;
 CREATE TABLE IF NOT EXISTS `estados` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1100,7 +1088,6 @@ INSERT INTO `estados` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`
 /*!40000 ALTER TABLE `estados` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.evidencias
-DROP TABLE IF EXISTS `evidencias`;
 CREATE TABLE IF NOT EXISTS `evidencias` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1168,7 +1155,6 @@ INSERT INTO `evidencias` (`id`, `img`, `descripcion`, `service_id`, `created_at`
 /*!40000 ALTER TABLE `evidencias` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.failed_jobs
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1185,7 +1171,6 @@ DELETE FROM `failed_jobs`;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.gastos
-DROP TABLE IF EXISTS `gastos`;
 CREATE TABLE IF NOT EXISTS `gastos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` bigint(20) unsigned NOT NULL,
@@ -1215,7 +1200,6 @@ INSERT INTO `gastos` (`id`, `service_id`, `nombre`, `descripcion`, `valor`, `imp
 /*!40000 ALTER TABLE `gastos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.happycall_estados
-DROP TABLE IF EXISTS `happycall_estados`;
 CREATE TABLE IF NOT EXISTS `happycall_estados` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1236,7 +1220,6 @@ INSERT INTO `happycall_estados` (`id`, `nombre`, `descripcion`, `created_at`, `u
 /*!40000 ALTER TABLE `happycall_estados` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.historias
-DROP TABLE IF EXISTS `historias`;
 CREATE TABLE IF NOT EXISTS `historias` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
@@ -1370,7 +1353,6 @@ INSERT INTO `historias` (`id`, `user_id`, `service_id`, `descripcion`, `created_
 /*!40000 ALTER TABLE `historias` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.historiasx
-DROP TABLE IF EXISTS `historiasx`;
 CREATE TABLE IF NOT EXISTS `historiasx` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -1386,7 +1368,6 @@ DELETE FROM `historiasx`;
 /*!40000 ALTER TABLE `historiasx` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.inventario
-DROP TABLE IF EXISTS `inventario`;
 CREATE TABLE IF NOT EXISTS `inventario` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `productox_id` int(10) unsigned NOT NULL,
@@ -1397,18 +1378,19 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `cantidad_disponible` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.inventario: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.inventario: ~3 rows (aproximadamente)
 DELETE FROM `inventario`;
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
 INSERT INTO `inventario` (`id`, `productox_id`, `serie`, `cantidad`, `cellar_id`, `created_at`, `updated_at`, `cantidad_disponible`) VALUES
-	(1, 1, 'AA1', 20, 2, NULL, NULL, 0),
-	(7, 1, 'AA2', 360, 2, '2021-02-22 21:33:17', '2021-02-22 22:10:31', 24);
+	(1, 1, 'AA1', 20, 2, NULL, '2021-03-07 12:50:40', 0),
+	(7, 1, 'AA2', 360, 2, '2021-02-22 21:33:17', '2021-03-07 12:50:40', 0),
+	(8, 1, 'AA3', 360, 2, '2021-02-22 21:33:17', '2021-03-07 12:50:40', 2),
+	(9, 1, 'BB1', 10, 3, '2021-03-07 09:33:47', '2021-03-07 10:57:21', 9);
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.marcas
-DROP TABLE IF EXISTS `marcas`;
 CREATE TABLE IF NOT EXISTS `marcas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1445,7 +1427,6 @@ INSERT INTO `marcas` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.messages
-DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1475,7 +1456,6 @@ INSERT INTO `messages` (`id`, `descripcion`, `body`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1483,7 +1463,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.migrations: ~40 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.migrations: ~38 rows (aproximadamente)
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -1530,7 +1510,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.modos
-DROP TABLE IF EXISTS `modos`;
 CREATE TABLE IF NOT EXISTS `modos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1553,7 +1532,6 @@ INSERT INTO `modos` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) 
 /*!40000 ALTER TABLE `modos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1567,7 +1545,6 @@ DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.pedidos
-DROP TABLE IF EXISTS `pedidos`;
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `proveedor_id` int(10) unsigned NOT NULL,
@@ -1605,7 +1582,6 @@ DELETE FROM `pedidos`;
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.productos
-DROP TABLE IF EXISTS `productos`;
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1638,7 +1614,6 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `created_at`, `updated_a
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.productox
-DROP TABLE IF EXISTS `productox`;
 CREATE TABLE IF NOT EXISTS `productox` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1652,7 +1627,7 @@ CREATE TABLE IF NOT EXISTS `productox` (
   UNIQUE KEY `productox_codigo_unique` (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.productox: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.productox: ~0 rows (aproximadamente)
 DELETE FROM `productox`;
 /*!40000 ALTER TABLE `productox` DISABLE KEYS */;
 INSERT INTO `productox` (`id`, `codigo`, `cod_interno`, `modelo`, `num_parte`, `descripcion`, `created_at`, `updated_at`) VALUES
@@ -1661,7 +1636,6 @@ INSERT INTO `productox` (`id`, `codigo`, `cod_interno`, `modelo`, `num_parte`, `
 /*!40000 ALTER TABLE `productox` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.producto_venta
-DROP TABLE IF EXISTS `producto_venta`;
 CREATE TABLE IF NOT EXISTS `producto_venta` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `venta_id` int(10) unsigned NOT NULL,
@@ -1677,7 +1651,6 @@ DELETE FROM `producto_venta`;
 /*!40000 ALTER TABLE `producto_venta` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.proveedors
-DROP TABLE IF EXISTS `proveedors`;
 CREATE TABLE IF NOT EXISTS `proveedors` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1706,7 +1679,6 @@ INSERT INTO `proveedors` (`id`, `nombre`, `apellido`, `email`, `identificacion`,
 /*!40000 ALTER TABLE `proveedors` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.razons
-DROP TABLE IF EXISTS `razons`;
 CREATE TABLE IF NOT EXISTS `razons` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1747,7 +1719,6 @@ INSERT INTO `razons` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `razons` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.reparacions
-DROP TABLE IF EXISTS `reparacions`;
 CREATE TABLE IF NOT EXISTS `reparacions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1773,7 +1744,6 @@ INSERT INTO `reparacions` (`id`, `nombre`, `descripcion`, `created_at`, `updated
 /*!40000 ALTER TABLE `reparacions` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.repuestos
-DROP TABLE IF EXISTS `repuestos`;
 CREATE TABLE IF NOT EXISTS `repuestos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` int(10) unsigned DEFAULT NULL,
@@ -1849,7 +1819,6 @@ INSERT INTO `repuestos` (`id`, `service_id`, `proveedor_id`, `serie`, `modelo`, 
 /*!40000 ALTER TABLE `repuestos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.repuesto_service
-DROP TABLE IF EXISTS `repuesto_service`;
 CREATE TABLE IF NOT EXISTS `repuesto_service` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `repuesto_id` int(10) unsigned NOT NULL,
@@ -1896,7 +1865,6 @@ INSERT INTO `repuesto_service` (`id`, `repuesto_id`, `service_id`, `created_at`,
 /*!40000 ALTER TABLE `repuesto_service` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1918,7 +1886,6 @@ INSERT INTO `roles` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.role_user
-DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE IF NOT EXISTS `role_user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(10) unsigned NOT NULL,
@@ -1965,7 +1932,6 @@ INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.services
-DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned DEFAULT NULL,
@@ -2132,7 +2098,6 @@ INSERT INTO `services` (`id`, `user_id`, `cliente_id`, `staff_id`, `estado_id`, 
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.service_user
-DROP TABLE IF EXISTS `service_user`;
 CREATE TABLE IF NOT EXISTS `service_user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` int(10) unsigned NOT NULL,
@@ -2274,7 +2239,6 @@ INSERT INTO `service_user` (`id`, `service_id`, `user_id`, `percent`, `main`, `c
 /*!40000 ALTER TABLE `service_user` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.tipos
-DROP TABLE IF EXISTS `tipos`;
 CREATE TABLE IF NOT EXISTS `tipos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2296,7 +2260,6 @@ INSERT INTO `tipos` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) 
 /*!40000 ALTER TABLE `tipos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2338,7 +2301,6 @@ INSERT INTO `users` (`id`, `name`, `identificacion`, `estado`, `email`, `email_v
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Volcando estructura para tabla operac_local.ventas
-DROP TABLE IF EXISTS `ventas`;
 CREATE TABLE IF NOT EXISTS `ventas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cliente_id` int(10) unsigned DEFAULT NULL,
@@ -2355,15 +2317,13 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.ventas: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.ventas: ~1 rows (aproximadamente)
 DELETE FROM `ventas`;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
 INSERT INTO `ventas` (`id`, `cliente_id`, `fecha`, `num_factura`, `empresa_id`, `total_bruto`, `impuesto`, `total`, `observaciones`, `condiciones`, `valor_letras`, `clausulas`, `created_at`, `updated_at`) VALUES
-	(6, 115, NULL, NULL, NULL, '25000', '19', '29750', NULL, NULL, NULL, NULL, '2020-11-23 20:20:18', '2020-11-23 20:20:18'),
-	(7, 116, NULL, NULL, NULL, '50000', '19', '59500', NULL, NULL, NULL, NULL, '2020-11-23 21:29:54', '2020-11-23 21:29:54'),
-	(8, 115, NULL, NULL, NULL, '20000', '19', '23800', NULL, NULL, NULL, NULL, '2021-02-09 21:06:14', '2021-02-09 21:06:14');
+	(2, 115, NULL, 'FAC1', NULL, '49340', '19', '58714.6', 'Pruebas', NULL, NULL, NULL, '2021-03-07 12:50:40', '2021-03-07 12:50:40');
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -155,6 +155,8 @@ async function ajaxFormRegisterVentas(event) {
     data.push({ 'impuesto': impuesto.value })
     data.push({ 'total': total.value })
     data.push({ 'cliente_id': formVentaRegister.cliente_id.value })
+    data.push({ 'observaciones': formVentaRegister.observaciones.value })
+    data.push({ 'num_factura': formVentaRegister.num_factura.value })
     data.push({ 'productos': ventaArray })
     const register = await axios.post(formVentaRegister.action, data, { responseType: 'blob',  },).then(res => {
 

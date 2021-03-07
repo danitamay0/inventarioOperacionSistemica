@@ -10,5 +10,9 @@ class Productox extends Model
     //
     protected $table = 'productox';
     protected $primaryKey = 'id';
+
+    static function validarProducto($codigo){
+        return Productox::where('codigo', '=', $codigo )->exists() ? true : false;
+    }
    
 }

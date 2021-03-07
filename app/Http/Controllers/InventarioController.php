@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\InventarioSaveRequest;
 use App\Models\CargueInventario;
 use App\Models\Cellar;
 use App\Models\Inventario;
 use App\Models\Proveedor;
+use App\Productox;
 use App\Services\ResponseInventario;
 use App\Services\CargueInventarioService;
+use Exception;
 use Illuminate\Http\Request;
 
 class InventarioController extends Controller
@@ -180,5 +182,58 @@ class InventarioController extends Controller
         
         $dataCargue['productox_id'] = $product->id;
         return $dataCargue;
+    }
+
+    public function buscarProducto(){
+        $request = Request()->all();
+      /*   if (request()->expectsJson()) { */
+          
+            try {
+                $producto = Productox::where('codigo', '=', $request['codigo'] )->first();
+                if ($producto) {
+                    $sql = ' SELECT i.* 
+                                FROM inventario i 
+                                 WHERE i.productox_id = '.$producto->id.'
+                                AND cellar_id = '.$request['cellar_id'] . ' AND cantidad_disponible >  0 ' ;
+                    $inventario  =  DB::select($sql);
+                   
+                    if(!$inventario){
+                        throw new Exception("No hay cantidades disponibles", 1);                
+                    }
+                    $total = 0;
+                    foreach ($inventario as $key => $value) {
+                        # code...
+                        $total += $value->cantidad_disponible;
+                    }
+
+                    $sql = ' SELECT c.costo_venta FROM cargues_inventario c 
+                             WHERE c.estado = "recibido"
+                     ORDER BY c.fecha_compra DESC LIMIT 1' ;
+                    $cargue  =  DB::select($sql);
+
+                    $producto['total'] = $total;
+                    $producto['costo_venta'] = $cargue[0]->costo_venta;
+                    $producto['valor_total'] = $cargue[0]->costo_venta;
+                    $producto['inventario'] = $inventario;
+                  
+                    return response()->json($producto);
+                }else{
+                    throw new Exception("El Producto no existe", 1);                
+                }
+            } catch (\Exception $th) {
+                return response()->json($th->getMessage(),400);
+              
+            }
+
+
+
+        /* }
+        return abort(404); */
+       
+    }
+
+
+    public function buscarCantidad(){
+
     }
 }

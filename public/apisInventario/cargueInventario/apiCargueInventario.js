@@ -104,6 +104,30 @@ async function editarProducto(ente_id) {
     window.location = '/productox/' + ente_id + '/edit';
 }
 
+async function cambiarEstado(id,estado) {
+
+  let form = new FormData();
+  form.append('cargue_inventario_id',id)
+  form.append('estado',estado)
+  const register = await axios.post('/cargue-inventario/estado', form).then(res => {
+   /*  refresh(res['data'])
+    $('#formProductoRegister').trigger("reset");
+    $('#modalProductoRegister').modal('hide'); */
+
+}).catch((error) => {
+  /*   if (error.response.data.errors) {
+        for (var clave in error.response.data.errors) {
+            console.log(clave);
+            let container = formProductoRegister.elements.namedItem(clave);
+            container.classList.add('is-invalid');
+            toastr.error(`<li> ${error.response.data.errors[clave]} </li>`);
+        }
+        console.error(error.response.data);
+    } */
+})
+}
+
+
 
 // Eliminar Producto
 function eliminarProducto(ente_id) {

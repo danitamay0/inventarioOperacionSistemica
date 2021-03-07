@@ -8,7 +8,7 @@ class CargueInventario extends Model
 {
     //
     protected $table = 'cargues_inventario';
-    protected $primaryKey = 'cargues_inventario_id';
+    protected $primaryKey = 'id';
 
    protected $fillable =   ["proveedor_id",
                                 "estado" ,

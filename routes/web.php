@@ -221,6 +221,9 @@ Route::get('productos-bodega/{id}', 'CellarController@verProductos');
 //inventario
 Route::resource('/inventario', 'InventarioController', ['except' => 'update']);
 Route::resource('/cargue-inventario', 'CargueInventarioController', ['only' => 'show']);
+Route::post('/cargue-inventario/estado', 'CargueInventarioController@actualizarEstado')->name('cargue.estado');
+
+Route::post('/buscar-cantidades', 'InventarioController@buscarProducto')->name('inventario.inventariocantidades');
 
 //Seguimientos
 Route::resource('/pedidos', 'PedidoController', ['except' => 'update', 'index']);

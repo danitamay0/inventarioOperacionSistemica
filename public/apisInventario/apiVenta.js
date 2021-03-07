@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     })
 })
 
-
+/* 
 async function ajaxFormRegisterVentas(event) {
     event.preventDefault();
 
@@ -93,7 +93,7 @@ async function ajaxFormRegisterVentas(event) {
     document.getElementById("btnSaveVenta").value = "Enviar";
     btnSaveVenta.disabled = false
 }
-
+ */
 // Traer datos de cliente
 
 async function editarVenta(ente_id) {

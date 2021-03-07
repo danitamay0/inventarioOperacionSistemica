@@ -8,12 +8,23 @@
 
     <div class="card-body">
 
-        <form id="formCodigoBuscar" method="POST" action="{{route('codigo.buscar')}}">
+        <form id="formCodigoBuscar" method="POST" action="{{route('inventario.inventariocantidades')}}">
             @csrf
             <div class="modal-body">
                 <div class="row text-left">
-
-                    <div class="col-md-12">
+                <div class="form-group col-md-4">
+                            <label class="text-dark"> Bodega </label>
+                            <select name="cellar_id" id="cellar_id"class="selectpickerp custom-select m-2" style="width:100%" required>
+                                @if (isset($bodegas) && count($bodegas)>0)
+                                @foreach ($bodegas as $bodega)
+                                <option value="{{$bodega->id}}">{{$bodega->nombre}}</option>
+                                @endforeach
+                                @else
+                                <option>Sin bodegas</option>
+                                @endif
+                            </select>
+                    </div>
+                    <div class="col-md-6">
                         <label class="text-dark"> Codigo de barras </label>
                         <input id="codigo" type="text" class="form-control" name="codigo" value="{{ old('codigo') }}"
                             autocomplete="off">
@@ -42,14 +53,15 @@
                             <thead class="thead">
                                 <tr>
                                     <th>Item</th>
-                                    <th style="width: 30px">Descripcion</th>
-                                    <th>Desc</th>
+                                    <th style="width: 30px">Descripción</th>
                                     <th>Cod</th>
                                     <th>Modelo</th>
-                                    <th>Serie</th>
+                                    <th>Cant. Disponibe</th>
+                                    <th>Cant. Venta</th>
+                                    <th style="width: 170px;" class="text-center">Series</th>
                                     <th>Vr Unidad</th>
-                                    <th>Cant</th>
                                     <th>Vr Todtal</th>
+                                    <th style="width: 20px">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody id="bodyTableCodigos">

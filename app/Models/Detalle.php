@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Detalle extends Model
 {
     protected $fillable = [
-        'producto_id',
+        'inventario_id',
         'venta_id',
         'cantidad',
         'precio',
     ];
+
+    public function inventario(){
+        return $this->belongsTo(Inventario::class);
+    }
 }

@@ -64,8 +64,8 @@
         }
 
         .invoice main .thanks {
-            margin-top: -100px;
-            font-size: 2em;
+          margin-top: -100px;
+            font-size: 1.5em;
             margin-bottom: 50px
         }
 
@@ -213,60 +213,57 @@
                     <div class="row contacts">
                         <div class="col invoice-to">
                             <div class="text-gray-light">Remision a:</div>
-                            <h2 class="to">John Doe</h2>
-                            <div class="address">796 Silver Harbour, TX 79273, US</div>
-                            <div class="email"><a href="#">john@example.com</a></div>
+                            <h2 class="to">{{$cliente->nombre}} {{$cliente->apellido}}</h2>
+                            <div class="address">{{$cliente->direccion}}</div>
+                            <div class="email"><a href="#">{{$cliente->email}}</a></div>
                         </div>
                         <div class="col invoice-details">
-                            <h1 class="invoice-id">Remision #1</h1>
+                            <h1 class="invoice-id">Remision {{$venta->id}}</h1>
                             <div class="date">{{\Carbon\Carbon::now()}}</div>
                         </div>
                     </div>
                     <table border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px">
                         <thead>
-                            <tr>
+                   
+                            <tr >
                                 <th>#</th>
                                 <th class="text-left">Descripcion</th>
+                                <th class="text-left">Modelo</th>
+                                <th class="text-left">Serie</th>
                                 <th class="text-right">Cantidad</th>
-                                <th class="text-right">Iva</th>
-                                <th class="text-right">Total</th>
+                                <th class="text-right">Precio</th>
+                                <th class="text-right">Subtotal</th>
                             </tr>
+                       
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="no">*</td>
-                                <td class="text-left">
-                                    <h3>
-                                        <a target="_blank" href="#">
-                                            Control
-                                        </a>
-                                    </h3>
-                                    {{-- <a target="_blank" href="#">
-                                        Useful videos
-                                    </a>
-                                    to improve your Javascript skills. Subscribe and stay tuned :) --}}
-                                </td>
-                                <td class="unit">2</td>
-                                <td class="qty">19</td>
-                                <td class="total">$30.000</td>
-                            </tr>
-
+                            @foreach ($detalles  as $key => $detalle)
+                                <tr >
+                                <td class="no">{{$key + 1}}</td>
+                                    <td class="text-left">{{$detalle->inventario->producto->descripcion}}</td>
+                                    <td class="text-left">{{$detalle->inventario->producto->modelo}}</td>
+                                    <td class="text-left">{{$detalle->inventario->serie}}</td>
+                                    <td class="unit">{{$detalle->cantidad}}</td>
+                                    <td class="qty">${{$detalle->precio}}</td>
+                                    <td class="total">${{$detalle->precio  * $detalle->cantidad}}</td>
+                                </tr>
+                            @endforeach;
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">SUBTOTAL</td>
-                                <td>$30,000</td>
+                                <td colspan="3"></td>
+                                <td colspan="3">SUBTOTAL</td>
+                                <td>${$venta->total_bruto}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">Impuestos 19%</td>
-                                <td>$5,700.00</td>
+                                <td colspan="3"></td>
+                                <td colspan="3">Impuestos {{$venta->impuesto}} %</td>
+                                <td>${{ ( $venta->impuesto *  $venta->total_bruto ) / 100  }}</td>
                             </tr>
                             <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">TOTAL</td>
-                                <td>$35,700.00</td>
+                                <td colspan="3"></td>
+                                <td colspan="3">TOTAL</td>
+                                <td>${{$venta->total}}</td>
                             </tr>
                         </tfoot>
                     </table>
