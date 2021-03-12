@@ -17,7 +17,17 @@ class Venta extends Model
         'observaciones',
         'condiciones',
         'valor_letras',
-        'clausulas'
+        'clausulas',
+        'fecha_promesa',
+        'fecha_autorizado',
+        'fecha_llegada',
+        'fecha_entregado',
+        'valor_cotizado',
+        'valor_aprobado',
+        'valor_cargo_cliente',
+        'dinero_recibido',
+        'happycallestado_id',
+        'observacion_happy'
     ];
 
     public function detalles()
@@ -28,5 +38,9 @@ class Venta extends Model
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
+    }
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class);
     }
 }

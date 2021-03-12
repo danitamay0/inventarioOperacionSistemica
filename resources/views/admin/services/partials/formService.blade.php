@@ -187,13 +187,13 @@
                 <div class="form-group col-md-6">
                     <label class="text-dark">Valor Cargo Fabrica </label>
                     <input type="currency" class="form-control" readonly name="valor_cargo_fabrica"
-                        value={{$service->getValorCargoFabrica($service->modo->nombre)}}>
+                       >
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="text-dark">Valor Cargo cliente </label>
                     <input type="currency" class="form-control" readonly required name="valor_cargo_cliente"
-                        value={{$service->getValorCargoCliente($service->modo->nombre)}}>
+                    >
                     <span id="alert-valor-cliente" class="text-danger"></span>
                 </div>
 

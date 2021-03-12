@@ -9,12 +9,12 @@
 
             <div class="card-body">
 
-                <form id="formHistoriaRegister" method="POST" action="{{route('historias.store')}}">
+                <form id="formHistoriaRegister" method="POST" action="{{route('historias-venta.store')}}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
 
-                        <input type="hidden" name="service_id" value="{{$service->id}}">
+                        <input type="hidden" name="service_id" value="{{$venta->id}}">
 
                             {{-- <!-- <div class="form-group col-md-6">
                                 <label class="text-dark"> Tipo de Modo </label>

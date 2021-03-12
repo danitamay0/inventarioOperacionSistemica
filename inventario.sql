@@ -126,15 +126,15 @@ CREATE TABLE IF NOT EXISTS `cargues_inventario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.cargues_inventario: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.cargues_inventario: ~4 rows (aproximadamente)
 DELETE FROM `cargues_inventario`;
 /*!40000 ALTER TABLE `cargues_inventario` DISABLE KEYS */;
 INSERT INTO `cargues_inventario` (`id`, `inventario_id`, `num_pedido`, `guia`, `num_factura`, `estado`, `orden_compra`, `observacion`, `fecha_compra`, `fecha_solicitud`, `delivery_orden`, `confirmacion`, `costo_antes_iva`, `impuesto`, `costo_in`, `cantidad`, `costo_total`, `costo_venta`, `ubicacion`, `proveedor_id`, `created_at`, `updated_at`) VALUES
-	(1, 1, '500', 'GUIA1', '500', 'solicitado', 'sdsd', '', '2021-02-18', '2021-02-18', 'SDSD', 'OK', 20000.00, 0, 20000.00, 1, 20000.00, 50000.00, '23', 1, '2021-02-18 21:16:13', '2021-02-18 21:16:13'),
-	(6, 7, 'RAD2', 'GUI2', '101002', 'solicitado', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:33:17', '2021-02-22 21:33:17'),
-	(7, 7, 'RAD2', 'GUI2', '101002', 'recibido', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:34:20', '2021-02-22 21:34:20'),
+	(1, 1, '500', 'GUIA1', '500', 'reservado', 'sdsd', '', '2021-02-18', '2021-02-18', 'SDSD', 'OK', 20000.00, 0, 20000.00, 1, 20000.00, 50000.00, '23', 1, '2021-02-18 21:16:13', '2021-03-07 14:21:24'),
+	(6, 7, 'RAD2', 'GUI2', '101002', 'recibido', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:33:17', '2021-03-07 14:07:23'),
+	(7, 7, 'RAD2', 'GUI2', '101002', 'reservado', '223', 'sdsd', '2021-12-31', '2021-12-31', 'DE2', '232', 234.00, 19, 278.46, 12, 3341.52, 2467.00, '2323', 2, '2021-02-22 21:34:20', '2021-03-07 14:07:51'),
 	(13, 10, '2323', 'DSSD', '2323', 'solicitado', '232', 'SDSD', '2021-12-31', '2021-03-31', 'SDSD', '23', 234.00, 0, 234.00, 23, 5382.00, 23.00, 'SDSD', 2, '2021-02-22 21:53:34', '2021-02-22 21:53:34'),
-	(14, 7, 'rad3', 'guia3', 'fact3', 'solicitado', 'sdsd', 'sdsd', '2021-12-31', '2022-12-31', 'sdsd', 'confirm', 558.00, 0, 558.00, 333, 185814.00, 34.25, 'sd23', 2, '2021-02-22 22:10:31', '2021-02-22 22:10:31'),
+	(14, 7, 'rad3', 'guia3', 'fact3', 'en backorder', 'sdsd', 'sdsd', '2021-12-31', '2022-12-31', 'sdsd', 'confirm', 558.00, 0, 558.00, 333, 185814.00, 34.25, 'sd23', 2, '2021-02-22 22:10:31', '2021-03-07 14:07:52'),
 	(15, 9, 'REDAR', '1SE2', 'RAD1', 'solicitado', 'SD23', 'ASDASD', '2021-12-31', '2021-12-31', 'ASDASD', 'ADASD', 5000.00, 0, 5000.00, 10, 50000.00, 9000.00, '255', 2, '2021-03-07 09:33:47', '2021-03-07 09:33:47');
 /*!40000 ALTER TABLE `cargues_inventario` ENABLE KEYS */;
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `cellars` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.cellars: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.cellars: ~0 rows (aproximadamente)
 DELETE FROM `cellars`;
 /*!40000 ALTER TABLE `cellars` DISABLE KEYS */;
 INSERT INTO `cellars` (`id`, `nombre`, `direccion`, `estado`, `created_at`, `updated_at`) VALUES
@@ -1367,6 +1367,33 @@ DELETE FROM `historiasx`;
 /*!40000 ALTER TABLE `historiasx` DISABLE KEYS */;
 /*!40000 ALTER TABLE `historiasx` ENABLE KEYS */;
 
+-- Volcando estructura para tabla operac_local.historias_ventas
+CREATE TABLE IF NOT EXISTS `historias_ventas` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `venta_id` int(10) unsigned DEFAULT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla operac_local.historias_ventas: ~0 rows (aproximadamente)
+DELETE FROM `historias_ventas`;
+/*!40000 ALTER TABLE `historias_ventas` DISABLE KEYS */;
+INSERT INTO `historias_ventas` (`id`, `user_id`, `venta_id`, `descripcion`, `created_at`, `updated_at`) VALUES
+	(1, NULL, NULL, 'sdsd', '2021-03-11 22:42:06', '2021-03-11 22:42:06'),
+	(2, NULL, NULL, 'text', '2021-03-11 22:42:12', '2021-03-11 22:42:12'),
+	(3, NULL, NULL, 'sdsd', '2021-03-11 22:43:08', '2021-03-11 22:43:08'),
+	(4, NULL, NULL, 'tesxt', '2021-03-11 22:43:42', '2021-03-11 22:43:42'),
+	(5, NULL, NULL, 'ergg', '2021-03-11 22:44:06', '2021-03-11 22:44:06'),
+	(6, NULL, NULL, 'asdasd', '2021-03-11 22:45:45', '2021-03-11 22:45:45'),
+	(7, NULL, NULL, 'asdasd', '2021-03-11 22:48:13', '2021-03-11 22:48:13'),
+	(8, NULL, NULL, 'text', '2021-03-11 22:48:19', '2021-03-11 22:48:19'),
+	(9, NULL, NULL, 'asdasd', '2021-03-11 22:48:47', '2021-03-11 22:48:47'),
+	(10, NULL, NULL, 'teeee', '2021-03-11 22:48:54', '2021-03-11 22:48:54');
+/*!40000 ALTER TABLE `historias_ventas` ENABLE KEYS */;
+
 -- Volcando estructura para tabla operac_local.inventario
 CREATE TABLE IF NOT EXISTS `inventario` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1380,12 +1407,12 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla operac_local.inventario: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla operac_local.inventario: ~2 rows (aproximadamente)
 DELETE FROM `inventario`;
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
 INSERT INTO `inventario` (`id`, `productox_id`, `serie`, `cantidad`, `cellar_id`, `created_at`, `updated_at`, `cantidad_disponible`) VALUES
-	(1, 1, 'AA1', 20, 2, NULL, '2021-03-07 12:50:40', 0),
-	(7, 1, 'AA2', 360, 2, '2021-02-22 21:33:17', '2021-03-07 12:50:40', 0),
+	(1, 1, 'AA1', 20, 2, NULL, '2021-03-07 14:21:19', 3),
+	(7, 1, 'AA2', 360, 2, '2021-02-22 21:33:17', '2021-03-07 14:07:50', 24),
 	(8, 1, 'AA3', 360, 2, '2021-02-22 21:33:17', '2021-03-07 12:50:40', 2),
 	(9, 1, 'BB1', 10, 3, '2021-03-07 09:33:47', '2021-03-07 10:57:21', 9);
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
@@ -2305,6 +2332,17 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cliente_id` int(10) unsigned DEFAULT NULL,
   `fecha` date DEFAULT NULL,
+  `fecha_promesa` date DEFAULT NULL,
+  `fecha_autorizado` date DEFAULT NULL,
+  `fecha_llegada` date DEFAULT NULL,
+  `fecha_entregado` date DEFAULT NULL,
+  `valor_cotizado` double(50,2) DEFAULT NULL,
+  `valor_aprobado` double(50,2) DEFAULT NULL,
+  `valor_cargo_cliente` double(50,2) DEFAULT NULL,
+  `dinero_recibido` double(50,2) DEFAULT NULL,
+  `happycallestado_id` int(11) DEFAULT NULL,
+  `happycall_calificacion` int(11) DEFAULT NULL,
+  `observacion_happy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `num_factura` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `empresa_id` bigint(20) unsigned DEFAULT NULL,
   `total_bruto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -2322,8 +2360,8 @@ CREATE TABLE IF NOT EXISTS `ventas` (
 -- Volcando datos para la tabla operac_local.ventas: ~1 rows (aproximadamente)
 DELETE FROM `ventas`;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
-INSERT INTO `ventas` (`id`, `cliente_id`, `fecha`, `num_factura`, `empresa_id`, `total_bruto`, `impuesto`, `total`, `observaciones`, `condiciones`, `valor_letras`, `clausulas`, `created_at`, `updated_at`) VALUES
-	(2, 115, NULL, 'FAC1', NULL, '49340', '19', '58714.6', 'Pruebas', NULL, NULL, NULL, '2021-03-07 12:50:40', '2021-03-07 12:50:40');
+INSERT INTO `ventas` (`id`, `cliente_id`, `fecha`, `fecha_promesa`, `fecha_autorizado`, `fecha_llegada`, `fecha_entregado`, `valor_cotizado`, `valor_aprobado`, `valor_cargo_cliente`, `dinero_recibido`, `happycallestado_id`, `happycall_calificacion`, `observacion_happy`, `num_factura`, `empresa_id`, `total_bruto`, `impuesto`, `total`, `observaciones`, `condiciones`, `valor_letras`, `clausulas`, `created_at`, `updated_at`) VALUES
+	(2, 115, '2021-03-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 5, NULL, 'FAC1', NULL, '49340', '19', '58714.6', 'Pruebas', NULL, NULL, NULL, '2021-03-07 12:50:40', '2021-03-07 12:50:40');
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

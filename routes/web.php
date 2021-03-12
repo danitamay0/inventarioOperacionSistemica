@@ -108,6 +108,7 @@ Route::get('/adicionales/{service}/index', 'AdicionalController@index')->name('a
 
 //Services
 Route::resource('/services', 'ServiceController', ['except' => 'update']);
+Route::resource('/detalle-venta', 'DetalleVentaController', ['except' => 'update']);
 Route::patch('/services/update', 'ServiceController@update')->name('services.update');
 Route::get('/services/filter/{finicio}/{ffin}', 'ServiceController@filtro');
 Route::post('/services/printservice/', 'ServiceController@printservice')->name('services.printservice');
@@ -179,6 +180,7 @@ Route::get('/repuestos/eliminar/{accesorio}/{service}', 'RepuestoController@elim
 
 //Historias
 Route::resource('/historias', 'HistoriaController', ['except' => ['update', 'index']]);
+Route::resource('/historias-venta', 'HistoriaVentaController', ['except' => ['update', 'index']]);
 Route::get('/gethistorias/{service}', 'HistoriaController@index');
 Route::patch('/historias/update', 'HistoriaController@update')->name('historias.update');
 

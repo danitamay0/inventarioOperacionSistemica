@@ -19,11 +19,16 @@ class ResponseVenta
                 //             <i class="fa fa-edit"></i>
                 //             </a>';
                 $button .=
-                    '<a class="btn btn-circle btn-danger mr-1" href="javascript:void(0)" onclick="eliminarVenta(' . $categoria->id . ')"
+                    '
+                    <a class="btn btn-circle btn-primary mr-1" href="/detalle-venta/' . $categoria->id . '"
+                        title="Ver">
+                        <i class="fa fa-eye"></i>
+                        </a>;
+                    <a class="btn btn-circle btn-danger mr-1" href="javascript:void(0)" onclick="eliminarVenta(' . $categoria->id . ')"
                             title="Eliminar">
                             <i class="fa fa-fw fa-trash"></i>
-                            </a>';
-                $button .= '</div>';
+                            </a>
+                     </div>';
 
                 return $button;
             })
