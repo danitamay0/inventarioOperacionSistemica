@@ -17,6 +17,10 @@ const registerDinero = (id) => {
     document.getElementById('formDinero').service_id.value = id
     $('#DineroModal').modal('show')
 }
+const registerDineroVenta = (id) => {
+    document.getElementById('formDineroVenta').venta_id.value = id
+    $('#DineroModalVenta').modal('show')
+}
 
 function show(id) {
     if (document.getElementById) { //se obtiene el id

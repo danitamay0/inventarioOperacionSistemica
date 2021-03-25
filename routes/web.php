@@ -126,6 +126,12 @@ Route::patch('/dineros/update', 'DineroController@update')->name('dineros.update
 Route::get('/dineros/{service}/index', 'DineroController@index')->name('dineros.index');
 
 
+
+//Adicional Venta
+Route::resource('/dineros-venta', 'DinerosVentaController', ['except' => 'update', 'index']);
+Route::get('/dineros-venta/{service}/index', 'DinerosVentaController@index')->name('dinerosventa.index');
+Route::patch('/dineros-venta/update', 'DinerosVentaController@update')->name('dinerosventa.update');
+
 //Estados
 Route::resource('/tiporeparacions', 'ReparacionController', ['except' => 'update']);
 Route::patch('/tiporeparacions/update', 'ReparacionController@update')->name('tiporeparacions.update');
@@ -180,9 +186,11 @@ Route::get('/repuestos/eliminar/{accesorio}/{service}', 'RepuestoController@elim
 
 //Historias
 Route::resource('/historias', 'HistoriaController', ['except' => ['update', 'index']]);
-Route::resource('/historias-venta', 'HistoriaVentaController', ['except' => ['update', 'index']]);
 Route::get('/gethistorias/{service}', 'HistoriaController@index');
 Route::patch('/historias/update', 'HistoriaController@update')->name('historias.update');
+
+Route::resource('/historias-venta', 'HistoriaVentaController', ['except' => ['update', 'index']]);
+Route::get('/gethistorias-venta/{venta}', 'HistoriaVentaController@index');
 
 Route::get('/addmultiple', 'SettingController@addmultiple');
 Route::get('/addSeeder', 'SettingController@addSeeder');
@@ -233,7 +241,7 @@ Route::patch('/pedidos', 'PedidoController@index')->name('pedidos.update');
 
 //ventas
 Route::resource('/ventas', 'VentaController', ['except' => 'update', 'index']);
-Route::patch('/ventas', 'VentaController@index')->name('ventas.update');
+Route::patch('/ventas', 'VentaController@update')->name('ventas.update');
 
 Route::post('/buscar-codigo', 'ProductoxController@buscarCodigo')->name('codigo.buscar');
 

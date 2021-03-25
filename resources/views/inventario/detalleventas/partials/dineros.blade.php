@@ -3,7 +3,7 @@
     <div class="ml-auto d-flex align-items-center secondary-menu text-center m-2">
 
         <a class="btn btn-circle btn-danger mr-1" href="javascript:void(0)"
-            onClick="registerDinero('{{ $service->id }}')" title="Dinero">
+            onClick="registerDineroVenta('{{ $venta->id }}')" title="Dinero">
             <i class="fa fa-university" aria-hidden="true"></i>
         </a>
 

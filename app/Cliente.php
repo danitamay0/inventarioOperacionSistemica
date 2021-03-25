@@ -24,6 +24,7 @@ class Cliente extends Model
         'last',
         'accept'
     ];
+    protected $primaryKey = 'id';
 
     public function equipos()
     {

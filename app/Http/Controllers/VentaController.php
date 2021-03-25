@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 // use App\Http\Requests\VentaSaveRequest;
 // use App\Http\Requests\VentaUpdateRequest;
 use App\Imports\VentasImport;
-use App\Models\Cliente;
+use App\Cliente;
 use App\Models\Cellar;
 use App\Models\Detalle;
 //use App\Models\Producto;
@@ -160,10 +160,13 @@ class VentaController extends Controller
      */
     public function update(Request $request)
     {
+      
         if (request()->expectsJson()) {
             try {
                 $producto = Venta::findOrFail($request->id);
+
                 $producto->update(request()->all());
+
                 return response()->json('Venta actualizado correctamente', 200);
             } catch (\Throwable $th) {
                 return  response()->json($th->getMessage(), 500);

@@ -3,7 +3,7 @@ let formClienteUpdate = document.getElementById('formClienteUpdate');
 formClienteUpdate.addEventListener('submit', ajaxFormUpdateCliente);
 
 function cargarCliente() {
-
+    
     formClienteUpdate.id.value = service.cliente.id;
     formClienteUpdate.nombre.value = service.cliente.nombre;
     if (service.cliente.tipo_identificacion == 'Nit') {

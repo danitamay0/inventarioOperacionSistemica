@@ -11,7 +11,7 @@ const blockNombreUpdate = formClienteUpdate.querySelector('#blockNombre')
 const blockApellidoUpdate = formClienteUpdate.querySelector('#blockApellido')
 
 document.addEventListener('DOMContentLoaded', async function () {
-
+ 
     // datatables settings
     $.fn.dataTable.ext.errMode = 'none';
     dataTableClientes = await $('#dataTableClientes').DataTable({

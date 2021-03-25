@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\HistoriaSaveRequest;
 use Illuminate\Http\Request;
 use App\Models\HistoriaVenta;
+use App\Services\HistoriaVentaResponse;
 
 
 class HistoriaVentaController extends Controller
@@ -13,9 +14,13 @@ class HistoriaVentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(HistoriaVentaResponse $historiaResponse, $key)
     {
-        //
+        if (request()->expectsJson()) {
+          
+            $this->historiaResponse = $historiaResponse;
+            return  $this->historiaResponse->index($key);
+        }
     }
 
     /**
@@ -39,7 +44,7 @@ class HistoriaVentaController extends Controller
         
         if (request()->expectsJson()) {
             try {
-               
+              //dd(request()->all());
                 HistoriaVenta::create(request()->all());
                 return response()->json('Historia registrado correctamente');
             } catch (\Throwable $th) {
@@ -89,8 +94,12 @@ class HistoriaVentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->expectsJson()) {
+            HistoriaVenta::findOrFail($id)->delete();
+            return response('Historia Eliminada correctamente.');
+        }
+        return abort(404);
     }
 }

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchable: false,
         info: false,
 
-        ajax: "/gethistorias/" + service.id,
+        ajax: "/gethistorias-venta/" + venta.id,
 
         columns: [
             {
@@ -101,8 +101,9 @@ function eliminarHistoria(ente_id) {
         onclick: async function (toast) {
             value = toast.target.value
             if (value == 'yes') {
-                const url = SITEURL + '/historias/' + ente_id
+                const url = SITEURL + '/historias-venta/' + ente_id
                 try {
+                   
                     const success = await axios.delete(url);
                     console.log(success);
                     refresh(success.data)

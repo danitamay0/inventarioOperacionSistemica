@@ -6,24 +6,39 @@ use App\Models\Venta;
 use App\Cliente;
 use App\User;
 use App\HappycallEstado;
-
+use Illuminate\Support\Facades\DB;
 class QueryDetalleVentaService
 {
     public function query($venta)
     {
         $clientes = Cliente::toBase()->get();
        $users = User::toBase()->get();
-      /*   $descripciones = Producto::toBase()->get(); */
-     //dd($venta);
+       
         $happycallestados = HappycallEstado::toBase()->get();
+        //dd($venta);
+        $productos = DB::select('
+            SELECT I.serie , P.codigo,
+            P.cod_interno,
+            P.modelo,
+            P.num_parte , 
+            D.cantidad, D.precio
+            FROM detalles D
+            INNER JOIN inventario I ON I.id = D.inventario_id 
+            INNER JOIN productox P ON P.id = i.productox_id
+            WHERE D.venta_id =
+        '.$venta->id);
+        $totales['subtotal'] = 0;
+        foreach ($productos as $key => $value) {
+            # code...
+            $totales['subtotal']+= $value->cantidad * $value->precio;
 
-     //   $this->getInfo(request()->get('query'));
-
-    //$service = $this->getInfo(request()->get('query'));
+        }
+        $totales['subtotalImpuesto'] = ( $totales['subtotal'] * $venta->impuesto ) / 100;
+        $totales['total'] =   $totales['subtotal'] +    $totales['subtotalImpuesto'];
 
         if ($venta) {
-            return view('inventario.detalleventas.show', compact( 'venta', 'happycallestados', 
-           'clientes', 'users', ));
+            return view('inventario.detalleventas.show', compact( 'venta', 'happycallestados','productos', 
+           'clientes', 'users', 'totales' ));
         }
 
        /*  $query = request()->get('query');
@@ -34,37 +49,15 @@ class QueryDetalleVentaService
     public function getInfo($id)
     {
 
-        return Venta::with(
+        return  Venta::with(
             [
-              /*   'cliente'  => function ($query) {
-                    $query->where('id', 'nombre','apellido','identificacion');
-                }, */
-                'empresa' => function ($query) {
-                    $query->where('id', 'nombre');
-                },
+                'cliente' 
+                ,
+                'empresa',
              
             ]
          
-        )->findOrFail($id,['id','fecha',
-        'num_factura',
-        'total_bruto',
-        'impuesto',
-        'observaciones',
-        'condiciones',
-        'valor_letras',
-        'clausulas',
-        'created_at',
-        'fecha_promesa',
-        'fecha_autorizado',
-        'fecha_llegada',
-        'fecha_entregado',
-        'valor_cotizado',
-        'valor_aprobado',
-        'valor_cargo_cliente',
-        'dinero_recibido',
-        'happycallestado_id',
-        'happycall_calificacion',
-        'observacion_happy'
-        ]);
+        )->findOrFail($id);
+
     }
 }

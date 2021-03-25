@@ -77,6 +77,8 @@ class DetalleVentaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        dd($request);
+
     }
 
     /**

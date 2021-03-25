@@ -1,4 +1,4 @@
-<div class="modal fade mt-5" tabindex="-1" role="dialog" data-backdrop="static" data-ajax-modal id="DineroModal">
+<div class="modal fade mt-5" tabindex="-1" role="dialog" data-backdrop="static" data-ajax-modal id="DineroModalVenta">
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content ">
 
@@ -8,9 +8,9 @@
 
             <div class="card-body">
                 <div class="modal-body">
-                    <form id="formDinero" method="POST" action="{{route('dineros.store')}}">
+                    <form id="formDineroVenta" method="POST" action="{{route('dineros-venta.store')}}">
                         @csrf
-                        <input type="hidden" name="service_id">
+                        <input type="hidden" name="venta_id">
 
                         <div class="row m-2">
 

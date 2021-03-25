@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Cliente;
+use App\Cliente;
 
 class ClienteRepository implements InterfazRepository
 {

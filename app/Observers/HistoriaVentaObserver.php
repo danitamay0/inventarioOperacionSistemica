@@ -16,10 +16,12 @@ class HistoriaVentaObserver
     public function created(HistoriaVenta $historia)
     {
         //
+       
     }
 
     public function saving(HistoriaVenta $historia)
     {
+      
         $historia->user_id = Auth::user()->id;
     }
 

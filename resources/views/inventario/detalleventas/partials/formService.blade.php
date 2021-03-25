@@ -1,13 +1,13 @@
 <div class="card mb-0">
     <h6 class="text-center p-2 m-2">Cod: <small class="numService font-weight-bold"> {{$venta->id}} - {{$venta->num_factura}} </small> </h6>
-    <form id="formServiceUpdate" method="POST">
-    <!-- action="{{route('services.update')}}" -->
+    <form id="formVentaUpdate" method="POST"   action="{{route('ventas.update')}}">
+  
         @csrf
         @method('PATCH')
         <div class="modal-body">
             <div class="row">
 
-                <input type="hidden" name="id">
+                <input type="hidden" name="id" id="venta_id" value="{{$venta->id}}">
 
                 <div class="col-md-6">
                         <label class="text-dark">Cliente </label>
@@ -22,9 +22,6 @@
                             @endif
                         </select>
                     </div>
-
-
-                
 
                 <div class="form-group col-md-6">
                     <label class="text-dark"> Staff </label>
@@ -52,74 +49,6 @@
                     </select>
                 </div>
 
-
-              <!--   <div class="form-group col-md-6">
-                    <label class="text-dark"> Tipo de Servicio </label>
-                    <select name="tipo_id" class="form-control" required>
-                        @if (isset($tipos) && count($tipos)>0)
-                        @foreach ($tipos as $tipo)
-                        <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                        @endforeach
-                        @else
-                        <option>Sin Tipo de Servicios</option>
-                        @endif
-                    </select>
-                </div>
- -->
-         <!--        <div class="form-group col-md-6">
-                    <label class="text-dark"> Tipo de Reparacion </label>
-                    <select name="tipo_reparacion" class="form-control" required>
-                        @if (isset($typereparacions) && count($typereparacions)>0)
-                        @foreach ($typereparacions as $tipo_reparacion)
-                        <option value="{{$tipo_reparacion->id}}">{{$tipo_reparacion->nombre}}</option>
-                        @endforeach
-                        @else
-                        <option>Sin Tipo de Reparacions</option>
-                        @endif
-                    </select>
-                </div>
- -->
-              <!--   <div class="form-group col-md-6">
-                    <label class="text-dark"> Equipo </label>
-                    <select name="equipo_id" class="form-control" required disabled>
-                        @if (isset($equipos) && count($equipos)>0)
-                        @foreach ($equipos as $equipo)
-                        <option value="{{$equipo->id}}">{{$equipo->serie}}</option>
-                        @endforeach
-                        @else
-                        <option>Sin Equipos</option>
-                        @endif
-                    </select>
-                </div>
- -->
-             <!--    <div class="form-group col-md-6">
-                    <label class="text-dark"> Tipo de Modo </label>
-                    <select name="modo_id" class="form-control" required>
-                        @if (isset($modos) && count($modos)>0)
-                        @foreach ($modos as $modo)
-                        <option value="{{$modo->id}}">{{$modo->nombre}}</option>
-                        @endforeach
-                        @else
-                        <option>Sin Tipo de Modos</option>
-                        @endif
-                    </select>
-                </div>
- -->
-                <!-- <div class="form-group col-md-6">
-                    <label class="text-dark"> Tipo de Estado </label>
-                    <select name="estado_id" class="form-control" required>
-                        @if (isset($estados) && count($estados)>0)
-                        @foreach ($estados as $estado)
-                        <option value="{{$estado->id}}">{{$estado->nombre}}</option>
-                        @endforeach
-                        @else
-                        <option>Sin Tipo de Estados</option>
-                        @endif
-                    </select>
-                </div>
- -->
-                
-
                 <div class="form-group col-md-6">
                     <label class="text-dark">Fecha registro de servicio</label>
                     <input type="date" readonly value="{{$venta->fecha}}" class="form-control" required name="fecha_inicio">
@@ -138,12 +67,12 @@
               
                 <div class="form-group col-md-6">
                     <label class="text-dark">Fecha Llegada</label>
-                    <input type="date" class="form-control" value="{{$venta->fecha_llegada}}"  onchange="validateDateEntregado()" name="fecha_finalizado">
+                    <input type="date" class="form-control" value="{{$venta->fecha_llegada}}"  onchange="validateDateEntregado()" name="fecha_llegada">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="text-dark">Fecha Entregado</label>
-                    <input type="date" class="form-control" value="{{$venta->fecha_entregado}}"  onchange="validateDateEntregado()" name="fecha_finalizado">
+                    <input type="date" class="form-control" value="{{$venta->fecha_entregado}}"  onchange="validateDateEntregado()" name="fecha_entregado">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -154,8 +83,6 @@
                     <label class="text-dark">Valor Cotizado </label>
                     <input type="number" class="form-control" value="{{$venta->valor_cotizado}}"   name="valor_cotizado">
                 </div>
-
-                
 
                 <div class="form-group col-md-6">
                     <label class="text-dark">Valor Aprobado </label>
@@ -171,32 +98,9 @@
                     <input type="text" id="totalesdinero"  value="{{$venta->dinero_recibido}}"  class="form-control" disabled>
                 </div>
 
-            <!--     <div class="form-group col-md-6">
-                    <label class="text-dark">Valor repuestos </label>
-                    <input type="text" readonly class="form-control" name="valor_repuestos">
-                </div> -->
-
-             <!--    <div class="form-group col-md-6">
-                    <label class="text-dark">Valor Gastos </label>
-                    <input type="text" readonly class="form-control" name="valor_gastos">
-                </div> -->
-
-               <!--  <div class="form-group col-md-6">
-                    <label class="text-dark">Valor Adicionales </label>
-                    <input type="text" readonly class="form-control" name="valor_adicionales">
-                </div> -->
-
-              <!--   <div class="form-group col-md-6">
-                    <label class="text-dark">Valor Cargo Fabrica </label>
-                    <input type="currency" class="form-control" readonly name="valor_cargo_fabrica"
-                     
-                </div> -->
-
-
-
                 <div class="form-group col-md-6">
                     <label class="text-dark"> Happy Call Estado </label>
-                    <select name="happycall_estado"  value="{{$venta->happycallestado_id}}" class="form-control" required>
+                    <select name="happycallestado_id"  value="{{$venta->happycallestado_id}}" class="form-control" required>
                         @if (isset($happycallestados) && count($happycallestados)>0)
                         @foreach ($happycallestados as $happycallestado)
                         <option  <?= $venta->happycallestado_id == $happycallestado->id ? 'selected' : ''?> value="{{$happycallestado->id}}">{{$happycallestado->nombre}}</option>
@@ -210,6 +114,7 @@
                 <div class="form-group col-md-6">
                     <label class="text-dark">Happy Call Calificado </label>
                     <select name="happycall_calificacion"  class="form-control">
+                    
                         <option   <?= $venta->happycall_calificacion == '1' ? 'selected' : ''?>  value="1">1</option>
                         <option   <?= $venta->happycall_calificacion == '2' ? 'selected' : ''?>  value="2">2</option>
                         <option   <?= $venta->happycall_calificacion == '3' ? 'selected' : ''?>  value="3">3</option>
@@ -226,21 +131,62 @@
 
                 <div class="form-group col-md-6">
                     <label class="text-dark">Obsevacion Happy Call</label>
-                    <textarea type="text" cols="15" value="{{$venta->observacion_happy}}" class="form-control" name="observacion_happycallestado"></textarea>
+                    <textarea type="text" cols="15" value="{{$venta->observacion_happy}}" class="form-control" name="observacion_happy">{{$venta->observacion_happy}}</textarea>
                 </div>
 
                 <div class="form-group col-md-12">
                     <label class="text-dark">observacion Venta</label>
-                    <textarea type="text" cols="15" class="form-control"  value="{{$venta->observaciones}}" name="reporte" id="reporteTenico"></textarea>
+                    <textarea type="text" cols="15" class="form-control"  value="{{$venta->observaciones}}" name="observaciones" id="reporteTenico">{{$venta->observaciones}}</textarea>
                     <button type="button" class="btn btn-outline btn-sm" "></button>
                 </div>
 
               
 
                 <div class="form-group col-md-6">
-                    <input type="submit" class="btn btn-outline-info  btn-sm " id="btnUpdateService" value="Enviar">
+                    <input type="submit" class="btn btn-outline-info  btn-sm " id="btnUpdateVenta" value="Enviar">
                 </div>
             </div>
         </div>
     </form>
+    <div class="table-responsive p-4">
+
+@isset($success)
+<span class="alert-success">Importacion exitosa</span>
+@endisset
+
+
+<table class="table align-items-center table-flush table-hover" id="dataTableInventario">
+    <thead class="thead">
+        <tr>
+            <th>cod_interno</th>
+            <th>Modelo</th>
+            <th>Num. Parte</th>
+            <th>Serie</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+
+        </tr>
+    </thead>
+    <h5>Productos </h5>
+    <tbody id="bodyTableProducto">
+   @foreach($productos as $p)
+   <tr>
+    <td>{{$p->cod_interno}}</td>
+    <td>{{$p->modelo}}</td>
+    <td>{{$p->num_parte}}</td>
+    <td class="text-right">{{$p->serie}}</td>
+    <td class="text-right">{{$p->cantidad}}</td>
+    <td class="text-right">${{$p->precio}}</td>
+   </tr>
+   @endforeach
+   <tr>
+    <td colspan="3"></td>
+    <td class="text-right">Subtotal: ${{$totales['subtotal']}} </td>
+    <td class="text-right">Impuesto  : ${{$totales['subtotalImpuesto']}}  </td>
+   <td class="text-right" >Total:  $ {{$totales['total']}}   </td>
+  
+   </tr>
+    </tbody>
+</table>
+</div> 
 </div>

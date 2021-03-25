@@ -11,6 +11,7 @@ class Venta extends Model
         'fecha',
         'num_factura',
         'empresa_id',
+
         'total_bruto',
         'impuesto',
         'total',
@@ -26,6 +27,7 @@ class Venta extends Model
         'valor_aprobado',
         'valor_cargo_cliente',
         'dinero_recibido',
+        'happycall_calificacion',
         'happycallestado_id',
         'observacion_happy'
     ];
@@ -34,10 +36,11 @@ class Venta extends Model
     {
         return $this->hasMany(Detalle::class);
     }
-
-    public function cliente()
+  
+    function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+        # code...
+        return $this->belongsTo(\App\Cliente::class,'cliente_id','id');
     }
     public function empresa()
     {
